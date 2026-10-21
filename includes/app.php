@@ -1,6 +1,10 @@
 <?php 
 use Model\ActiveRecord;
-require __DIR__ . '/../vendor/autoload.php';
+if(file_exists(__DIR__ . '/../vendor/autoload.php')){
+    require __DIR__ . '/../vendor/autoload.php';
+}else{
+    require __DIR__ . '/../repositories/Fadm_nomina/vendor/autoload.php';
+}
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..'); // El '/..' es obligatorio para subir a la raíz
 $dotenv->load();
