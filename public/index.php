@@ -4,7 +4,7 @@
 error_reporting(E_ALL & ~E_DEPRECATED);
 ini_set('display_errors', 1);
 
-require_once __DIR__ . '/../includes/app.php';
+require_once __DIR__ . '/../repositories/Fadm_nomina/includes/app.php';
 
 use Controllers\AdminController;
 use Controllers\APICargoController;
