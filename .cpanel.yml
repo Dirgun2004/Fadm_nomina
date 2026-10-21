@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/fayduran/public_html
+    - export DEPLOYPATH=/home3/fayduran/public_html
     - /bin/cp -R public/* $DEPLOYPATH/
