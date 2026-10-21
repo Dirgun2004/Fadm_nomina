@@ -1,0 +1,41 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.nominas{
+    margin-top: 5rem;
+    
+    &__grid{
+        @include m.contenedor;
+        @include m.grid(1, 3rem);
+        @include m.tablet{
+            @include m.grid(2, 3rem);
+        }
+        @include m.desktop{
+            @include m.grid(3, 3rem);
+        }
+    }
+}
+
+.nomina{
+    background-color: v.$blanco;
+    padding: 1rem;
+    border-radius: 2rem;
+    border-bottom: 1rem solid v.$vino;
+    text-align: center;
+    color: v.$negro;
+
+    &__title{
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 2rem 1rem;
+    }
+
+    &__texto{
+        font-size: 1.8rem;
+
+        &-span{
+            font-size: 6rem;
+        }
+    }
+}

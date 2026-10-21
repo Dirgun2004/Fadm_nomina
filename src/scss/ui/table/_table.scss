@@ -1,0 +1,215 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.table{
+    border-collapse: collapse;
+    //border-radius: 2rem;
+    //overflow: hidden;
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 3rem;
+
+    thead{
+        background-color: color.adjust(v.$vino, $lightness: -10%);
+        color: v.$blanco;
+        // Redondeamos solo las esquinas superiores de la cabecera
+        tr:first-child th:first-child {
+            border-top-left-radius: 2rem;
+        }
+        tr:first-child th:last-child {
+            border-top-right-radius: 2rem;
+        }
+    }
+
+    th{
+        padding: 1rem;
+        text-transform: capitalize;
+    }
+
+    &__acciones{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 2rem 1rem;
+
+        &-editar{
+            @include m.boton(#007BFF, v.$blanco);
+        }
+
+        &-eliminar{
+            @include m.boton(v.$rojo, v.$blanco);
+        }
+
+        &-pdf{
+            @include m.boton(v.$vino, v.$blanco);
+        }
+
+        &-editar, &-eliminar, &-pdf{
+            width: auto;
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+            
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        
+        &-agregar{
+            @include m.boton(#007BFF, v.$blanco);
+            width: fit-content;
+            height: fit-content;
+            padding: 1.2rem 1.8rem;
+            border-radius: 1rem;
+            
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+    }    
+
+    &__td{
+        padding: 1rem 1rem;
+    
+        @include m.desktop{
+            &:nth-child(2){
+                white-space: nowrap;
+            }
+
+        }
+
+        &-accion{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .5rem;
+            font-size: 1.8rem;
+
+            &-pdf{
+                font-size: 2rem;
+            }
+        }
+
+        &-activa{
+            padding: .7rem;
+            border-radius: 10rem;
+            background-color: v.$verde;
+            color: v.$blanco;
+        }
+        
+        &-inactiva{
+            padding: .7rem;
+            border-radius: 10rem;
+            background-color: v.$rojo;
+            color: v.$blanco;
+        }
+        &-vacaciones{
+            padding: .7rem;
+            border-radius: 10rem;
+            background-color: v.$mostaza;
+            color: v.$blanco;
+        }
+        
+        &-activa, &-inactiva{
+            cursor: default;
+        }
+
+    }
+
+
+
+    &__tr{
+
+        &:nth-child(odd){
+            background-color: v.$blanco;
+        }
+    }
+
+    &__no-resultado{
+        width: 100%;
+        text-align: center;
+        background-color: v.$blanco;
+        color: v.$gris-oscuro;
+        font-weight: v.$bold;
+    }
+} 
+
+// Componente Desplegable para Acciones Múltiples
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    // Botón principal que activa el menú (hereda tu estilo de PDF)
+    &-toggle {
+        @include m.boton(v.$vino, v.$blanco);
+        width: auto;
+        padding: 1.5rem 2rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        
+        &:hover {
+            cursor: pointer;
+        }
+
+        &-adjust{
+            @extend .dropdown-toggle;
+            @include m.boton(v.$azul, v.$blanco);
+            padding: 1.5rem 1.5rem;
+        }
+    }
+
+    // Contenedor oculto del menú flotante
+    &-menu {
+        display: none; // Se oculta por defecto
+        position: absolute;
+        right: 0; // Se alinea a la derecha del botón para que no se salga de la pantalla
+        top: calc(100% + .5rem); // Un pequeño margen debajo del botón
+        background-color: v.$blanco;
+        min-width: 220px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border-radius: 1rem;
+        overflow: hidden;
+        z-index: 100;
+        text-align: left;
+        border: 1px solid color.adjust(v.$gris, $lightness: 25%);
+
+        // Enlaces dentro del menú desplegable
+        a {
+            display: block;
+            padding: 1.2rem 1.6rem;
+            font-size: 1.4rem;
+            font-weight: v.$regular;
+            color: v.$gris-oscuro;
+            text-decoration: none;
+            border-bottom: 1px solid color.adjust(v.$gris-claro, $lightness: 5%);
+            transition: background-color 0.2s ease, color 0.2s ease;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            // Efecto Hover elegante usando tus colores institucionales
+            &:hover {
+                background-color: color.adjust(v.$gris-claro, $lightness: 10%);
+                color: v.$vino;
+                padding-left: 2rem; // Pequeño efecto de desplazamiento lateral sutil
+            }
+        }
+    }
+
+    .dropdown-menu-adjust{
+        a:hover{
+            color: v.$azul;
+        }
+    }
+
+    // Clase utilitaria para mostrar el menú (ideal para manejarlo con un toque o un pequeño script JS)
+    &.activo {
+        .dropdown-menu {
+            display: block;
+        }
+    }
+}

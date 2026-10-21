@@ -1,0 +1,62 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.error-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 3rem 2rem;
+    text-align: center;
+
+    &__contenedor {
+        max-width: 50rem;
+        background-color: #ffffff;
+        padding: 4rem 3rem;
+        border-radius: 1.2rem;
+        box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+    }
+
+    &__icono {
+        font-size: 6rem;
+        color: v.$vino; /* Color de alerta / error */
+        margin-bottom: 1.5rem;
+    }
+
+    &__codigo {
+        font-size: 6rem;
+        font-weight: 900;
+        color: #334155;
+        line-height: 1;
+        margin-bottom: 1rem;
+    }
+
+    &__titulo {
+        font-size: 2.4rem;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+    }
+
+    &__texto {
+        font-size: 1.6rem;
+        color: #64748b;
+        margin-bottom: 3rem;
+        line-height: 1.6;
+    }
+
+    &__acciones {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__enlace {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        padding: 1.2rem 2.5rem;
+        font-size: 1.6rem;
+    }
+}

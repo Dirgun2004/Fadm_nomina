@@ -1,0 +1,6 @@
+.env
+vendor
+node_modules
+package-lock.json
+package.json
+includes/fadm_nomina.sql

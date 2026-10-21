@@ -1,0 +1,102 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.dashboard{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$gris-claro;
+    
+    &__grid{
+        display: flex;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    &__contenido{
+        width: 100%;
+        padding: 1rem 1rem 3rem 1rem;
+        overflow-y: scroll;
+       
+    }
+
+    &__titulo{
+        margin: 0;
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 3rem;
+        align-items: center;
+        border-bottom: 1px solid color.adjust(v.$gris-oscuro, $lightness: 30%);
+
+        &-descripcion{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+    }
+
+    &__no-resultado{
+        background-color: color.adjust(v.$gris-claro, $lightness: -10%);
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        color: color.adjust(#000, $lightness: 20%);
+        
+        p{
+            margin: 0;
+        }
+    }
+
+}
+
+span{
+    font-weight: v.$bold;
+}
+
+.bloques{
+    @include m.contenedor;
+    margin-top: 5rem;
+
+    &__menu{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 3rem;
+        gap: 2rem;
+
+        .table__acciones:nth-child(even){
+            background-color: v.$gris-oscuro;
+        }
+    }
+
+    &__grid{
+        @include m.grid(2, 3rem);
+    }
+
+}
+
+.bloque{
+    border-radius: 1rem;
+    text-align: center;
+    color: v.$negro;
+    background-color: v.$blanco;
+    border-bottom: .5rem solid v.$vino;
+
+    &__titulo{
+        font-size: 3rem;
+        margin: 3rem 0;
+    }
+
+    &__contenido{
+        font-size: 6rem;
+        margin: 1rem 0;
+        font-weight: v.$bold;
+    }
+    
+}

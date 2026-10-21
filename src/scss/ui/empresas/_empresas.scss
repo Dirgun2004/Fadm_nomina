@@ -1,0 +1,53 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.empresas{
+    @include m.tablet{
+        @include m.contenedor-sm;
+    }
+    @include m.desktop{
+        @include m.contenedor-md;
+    }
+    @include m.xl_desktop{
+        @include m.contenedor;
+    }
+    margin-top: 5rem;       
+
+    &__grid{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+           
+    }
+
+    &__crear, &__volver{
+        display: flex;
+        justify-content: flex-end;
+        margin: 3rem 5rem;
+        gap: 3rem;
+
+        &-enlace{
+            @include m.boton(v.$vino, v.$blanco);
+            text-transform: uppercase;
+            width: auto;
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+
+            &:nth-child(1){
+                background-color: v.$gris-oscuro;
+            }
+
+            &:nth-child(2){
+                background-color: v.$azul;
+            }
+
+            &:last-child{
+                background-color: v.$vino;
+            }
+        }
+
+    }
+
+}

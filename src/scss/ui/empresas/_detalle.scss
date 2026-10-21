@@ -1,0 +1,110 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.detalle{
+    &__grid{
+        @include m.contenedor;
+        @include m.grid(1, 4rem);
+    }
+
+    &__empleados{
+        @include m.grid(1, 3rem);
+        @include m.tablet{
+            @include m.grid(2, 3rem);
+        }
+        @include m.desktop{
+            @include m.grid(3, 2rem)
+        }
+    }
+
+    &__reportes{
+
+        @include m.grid(1, 3rem);
+        @include m.tablet{
+            @include m.grid(2, 3rem);
+        }
+        @include m.desktop{
+            @include m.grid(4, 3rem);
+        }
+    }
+}
+
+.detalles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: v.$blanco;
+    border-radius: 3rem;
+    text-align: center;
+    color: v.$gris-oscuro;
+    box-shadow: 2px 20px 24px -1px rgba(0,0,0,0.52);
+    
+    &:hover{
+        background-color: color.adjust(v.$blanco, $lightness: -10%);
+    }
+
+    &__icono{
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        background-color: v.$vino;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    i{
+        font-size: 3rem;
+        color: v.$blanco;
+        
+    }
+
+    h3{
+        font-size: 2rem;
+    }
+    
+    p{
+        font-size: 4rem;
+        margin: 0;
+        color: v.$vino;
+        font-weight: v.$bold;
+    }
+
+
+    &-empleado{
+        @extend .detalles;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 1rem;
+
+        &:first-child{
+            grid-column: span 1;
+            @include m.tablet{
+                grid-column: span 2;
+            }
+            @include m.desktop{
+                grid-column: span 1;
+            }
+        }
+        &:last-child{
+            cursor: default;
+
+            &:hover{
+                background-color: v.$blanco;
+            }
+        }
+
+        h3{
+            font-size: 1.8rem;
+        }
+
+        &__icono{
+            @extend .detalles__icono;
+            width: 6rem;
+            height: 6rem;
+        }
+    }
+}
+
