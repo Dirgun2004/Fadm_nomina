@@ -12,7 +12,7 @@ use MVC\Router;
 class BonosController{
 
     public static function empresa(Router $router) {
-        $pagina_actual = $_GET['page'];
+        $pagina_actual = $_GET['page'] ?? 1;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
         // Capturamos el ID de la empresa desde la URL

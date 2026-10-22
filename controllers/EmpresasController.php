@@ -13,7 +13,7 @@ use MVC\Router;
 class EmpresasController{
     public static function index(Router $router){
 
-        $pagina_actual = $_GET['page'];
+        $pagina_actual = $_GET['page'] ?? 1;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
         if(!$pagina_actual || $pagina_actual < 1){

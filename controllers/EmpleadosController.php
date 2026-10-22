@@ -16,7 +16,7 @@ use MVC\Router;
 
 class EmpleadosController{
     public static function index(Router $router){
-        $pagina_actual = $_GET['page'];
+        $pagina_actual = $_GET['page'] ?? 1;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
         $registro_por_pagina = 10;
 
