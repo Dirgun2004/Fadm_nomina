@@ -4,3 +4,5 @@ package-lock.json
 package.json
 includes/fadm_nomina.sql
 src
+vendor
+vendor.zip
